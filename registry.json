@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "sample-app",
+      "category": "샘플",
+      "description": "테스트용 샘플 앱",
+      "createdAt": "2026-02-21",
+      "iconGenerated": false
+    }
+  ],
+  "usedCategories": ["샘플"]
+}
