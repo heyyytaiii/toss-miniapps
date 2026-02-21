@@ -1,0 +1,836 @@
+/* === Budget Challenge Global Styles === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #10B981;
+  --primary-dark: #059669;
+  --primary-light: #D1FAE5;
+  --bg: #F0FDF4;
+  --card: #FFFFFF;
+  --text: #1F2937;
+  --text-secondary: #6B7280;
+  --warning: #F59E0B;
+  --warning-bg: #FFFBEB;
+  --danger: #EF4444;
+  --danger-bg: #FEF2F2;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  max-width: 428px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 72px;
+}
+
+/* === Layout === */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-content {
+  flex: 1;
+  padding: 20px 16px;
+  padding-bottom: 88px;
+}
+
+/* === Bottom Tab Navigation === */
+
+.bottom-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 428px;
+  display: flex;
+  background: var(--card);
+  border-top: 1px solid #E5E7EB;
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px));
+  z-index: 100;
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.tab-button.active {
+  color: var(--primary);
+}
+
+.tab-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* === Card === */
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+/* === Challenge Page === */
+
+.challenge-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.challenge-header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.challenge-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.challenge-setup .type-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text);
+}
+
+.type-btn.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.budget-input-group {
+  margin-bottom: 16px;
+}
+
+.budget-input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.budget-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.budget-input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.2s;
+  color: var(--text);
+  background: var(--card);
+}
+
+.budget-input:focus {
+  border-color: var(--primary);
+}
+
+.budget-unit {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.start-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.start-btn:hover {
+  background: var(--primary-dark);
+}
+
+.start-btn:disabled {
+  background: #D1D5DB;
+  cursor: not-allowed;
+}
+
+/* === Progress Section === */
+
+.progress-card {
+  text-align: center;
+}
+
+.progress-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.progress-amount {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.progress-amount.warning {
+  color: var(--warning);
+}
+
+.progress-amount.danger {
+  color: var(--danger);
+}
+
+.progress-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background: #E5E7EB;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease, background-color 0.3s;
+  background: var(--primary);
+}
+
+.progress-bar-fill.warning {
+  background: var(--warning);
+}
+
+.progress-bar-fill.danger {
+  background: var(--danger);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.days-remaining {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+}
+
+.days-remaining .number {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.days-remaining .label {
+  font-size: 13px;
+  color: var(--primary-dark);
+}
+
+.motivation {
+  text-align: center;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+}
+
+/* === Success Celebration === */
+
+.celebration {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.celebration-emoji {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+.celebration h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.celebration p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.new-challenge-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  background: none;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* === Expense Record Page === */
+
+.expense-input-card {
+  position: relative;
+}
+
+.amount-input-large {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: var(--card);
+}
+
+.amount-input-large:focus {
+  border-color: var(--primary);
+}
+
+.amount-input-large::placeholder {
+  color: #D1D5DB;
+  font-weight: 400;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.category-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.category-chip .emoji {
+  font-size: 24px;
+}
+
+.category-chip.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.memo-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 12px;
+  color: var(--text);
+  background: var(--card);
+}
+
+.memo-input:focus {
+  border-color: var(--primary);
+}
+
+.add-expense-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-expense-btn:disabled {
+  background: #D1D5DB;
+  cursor: not-allowed;
+}
+
+/* === Expense List === */
+
+.expense-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.expense-list-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.expense-list-total {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-category-icon {
+  font-size: 28px;
+  margin-right: 12px;
+}
+
+.expense-info {
+  flex: 1;
+}
+
+.expense-info .name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.expense-info .memo {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.expense-amount {
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.delete-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #FEE2E2;
+  color: var(--danger);
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #FECACA;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-secondary);
+}
+
+.empty-state .emoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 14px;
+}
+
+.running-total {
+  text-align: center;
+  padding: 12px;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.running-total .label {
+  font-size: 12px;
+  color: var(--primary-dark);
+}
+
+.running-total .amount {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+/* === Stats Page === */
+
+.bar-chart {
+  margin-top: 8px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.bar-label {
+  width: 56px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  height: 20px;
+  background: #F3F4F6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  min-width: 2px;
+}
+
+.bar-value {
+  width: 72px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* Daily chart */
+
+.daily-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120px;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.daily-bar-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.daily-bar {
+  width: 100%;
+  max-width: 36px;
+  background: var(--primary);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.6s ease;
+  min-height: 2px;
+}
+
+.daily-bar-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.daily-bar-amount {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+/* === Challenge History === */
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-status {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-info .title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.history-info .date {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.history-amount {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.history-amount.success {
+  color: var(--primary);
+}
+
+.history-amount.failed {
+  color: var(--danger);
+}
+
+/* === Badges === */
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.badge-card {
+  text-align: center;
+  padding: 16px 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.badge-card.unlocked {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.badge-card.locked {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.badge-emoji {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.badge-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.badge-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* === Ad Button === */
+
+.ad-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ad-button:hover {
+  opacity: 0.9;
+}
+
+.ad-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ad-button .icon {
+  font-size: 18px;
+}
+
+/* === No Active Challenge Banner === */
+
+.no-challenge-banner {
+  text-align: center;
+  padding: 24px;
+  background: var(--warning-bg);
+  border: 2px dashed var(--warning);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
+
+.no-challenge-banner p {
+  font-size: 14px;
+  color: #92400E;
+  font-weight: 600;
+}
+
+/* === Animations === */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content > * {
+  animation: slideUp 0.25s ease;
+}
+
+/* === Utility === */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

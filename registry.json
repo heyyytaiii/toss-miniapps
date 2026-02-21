@@ -13,10 +13,18 @@
       "description": "다양한 랜덤 추첨기 (룰렛, 사다리, 제비뽑기)",
       "createdAt": "2026-02-21",
       "iconGenerated": false
+    },
+    {
+      "name": "budget-challenge",
+      "category": "절약",
+      "description": "주간/월간 예산 도전 게임",
+      "createdAt": "2026-02-21",
+      "iconGenerated": false
     }
   ],
   "usedCategories": [
     "샘플",
-    "엔터테인먼트"
+    "엔터테인먼트",
+    "절약"
   ]
 }
