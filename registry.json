@@ -6,7 +6,17 @@
       "description": "테스트용 샘플 앱",
       "createdAt": "2026-02-21",
       "iconGenerated": false
+    },
+    {
+      "name": "luck-drawer",
+      "category": "엔터테인먼트",
+      "description": "다양한 랜덤 추첨기 (룰렛, 사다리, 제비뽑기)",
+      "createdAt": "2026-02-21",
+      "iconGenerated": false
     }
   ],
-  "usedCategories": ["샘플"]
+  "usedCategories": [
+    "샘플",
+    "엔터테인먼트"
+  ]
 }
