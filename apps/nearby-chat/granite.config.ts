@@ -1,7 +1,7 @@
 import { defineConfig } from '@apps-in-toss/web-framework/config';
 
 export default defineConfig({
-  appName: 'nearby-chat',
+  appName: '100m',
   brand: {
     displayName: '100m',
     primaryColor: '#3182F6',
