@@ -10,29 +10,14 @@ export function useMessages(roomId: string | undefined) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
   const blockedRef = useRef<string[]>(getBlockedUsers());
+  const joinedAtRef = useRef<string>(new Date().toISOString());
 
-  // Fetch initial messages
+  // Reset join time when room changes
   useEffect(() => {
     if (!roomId) return;
-
-    const fetchMessages = async () => {
-      setLoading(true);
-      const { data } = await supabase
-        .from('messages')
-        .select('*')
-        .eq('room_id', roomId)
-        .order('created_at', { ascending: true })
-        .limit(PAGE_SIZE);
-
-      if (data) {
-        setMessages(
-          data.filter((m) => !blockedRef.current.includes(m.user_id))
-        );
-      }
-      setLoading(false);
-    };
-
-    fetchMessages();
+    joinedAtRef.current = new Date().toISOString();
+    setMessages([]);
+    setLoading(false);
   }, [roomId]);
 
   // Subscribe to realtime messages
