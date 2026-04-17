@@ -20,11 +20,19 @@
       "description": "주간/월간 예산 도전 게임",
       "createdAt": "2026-02-21",
       "iconGenerated": false
+    },
+    {
+      "name": "nearby-chat",
+      "category": "소셜",
+      "description": "100m 근방 사람들과 실시간 단체 채팅",
+      "createdAt": "2026-04-03",
+      "iconGenerated": false
     }
   ],
   "usedCategories": [
     "샘플",
     "엔터테인먼트",
-    "절약"
+    "절약",
+    "소셜"
   ]
 }

@@ -3,5 +3,7 @@ dist/
 *.ait
 .DS_Store
 *.local
+.env
+.env.*
 *.log
 .omc/
