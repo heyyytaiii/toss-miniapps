@@ -13,7 +13,6 @@
   "dependencies": {
     "@apps-in-toss/web-framework": "latest",
     "@supabase/supabase-js": "^2.101.1",
-    "@toss-miniapps/shared": "workspace:*",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
   },

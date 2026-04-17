@@ -29,15 +29,22 @@ export function useLocation() {
     setState((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      // Try apps-in-toss SDK first (real-time tracking)
-      const { startUpdateLocation, Accuracy } = await import(
+      const { startUpdateLocation, getCurrentLocation, Accuracy } = await import(
         '@apps-in-toss/web-framework'
       );
+
+      // Request permission first
+      const permission = await getCurrentLocation.getPermission();
+      if (permission !== 'granted') {
+        await getCurrentLocation.openPermissionDialog();
+      }
+
+      // Start real-time tracking
       cleanupSdkRef.current = startUpdateLocation({
         options: {
           accuracy: Accuracy.High,
-          timeInterval: 10000, // 10초마다
-          distanceInterval: 20, // 20m 이동 시
+          timeInterval: 10000,
+          distanceInterval: 20,
         },
         onEvent: (location) => {
           setState({
@@ -48,11 +55,12 @@ export function useLocation() {
             error: null,
           });
         },
-        onError: () => {
+        onError: (error) => {
+          console.error('Location SDK error:', error);
           setState((prev) => ({
             ...prev,
             loading: false,
-            error: '위치를 가져올 수 없어요',
+            error: '위치 권한을 허용해주세요',
           }));
         },
       });
