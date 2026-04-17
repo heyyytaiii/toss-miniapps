@@ -3,10 +3,9 @@ import { containsProfanity } from '../lib/profanity';
 
 interface NicknamePromptProps {
   onSubmit: (nickname: string) => void;
-  onDemo?: () => void;
 }
 
-export function NicknamePrompt({ onSubmit, onDemo }: NicknamePromptProps) {
+export function NicknamePrompt({ onSubmit }: NicknamePromptProps) {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
 
@@ -50,11 +49,6 @@ export function NicknamePrompt({ onSubmit, onDemo }: NicknamePromptProps) {
         <button style={styles.button} onClick={handleSubmit}>
           시작하기
         </button>
-        {onDemo && (
-          <button style={styles.demoBtn} onClick={onDemo}>
-            🧪 데모 모드로 둘러보기
-          </button>
-        )}
       </div>
     </div>
   );
@@ -117,17 +111,6 @@ const styles: Record<string, React.CSSProperties> = {
     color: '#fff',
     background: '#3182f6',
     border: 'none',
-    borderRadius: 12,
-    cursor: 'pointer',
-  },
-  demoBtn: {
-    width: '100%',
-    padding: '12px 0',
-    marginTop: 10,
-    fontSize: 14,
-    color: '#8b95a1',
-    background: 'none',
-    border: '1px solid #e5e8eb',
     borderRadius: 12,
     cursor: 'pointer',
   },
