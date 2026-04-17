@@ -50,7 +50,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 const styles: Record<string, React.CSSProperties> = {
   container: {
     padding: '8px 12px',
-    paddingBottom: 'max(8px, env(safe-area-inset-bottom))',
+    paddingBottom: 'max(20px, calc(env(safe-area-inset-bottom) + 8px))',
     background: '#fff',
     borderTop: '1px solid #f2f3f5',
   },
