@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useMessages } from '../hooks/useMessages';
 import { getUserId, addBlockedUser } from '../lib/storage';
-import { attachBanner } from '../lib/ads';
+import { attachBanner, adsEnabled } from '../lib/ads';
 import { MessageBubble } from './MessageBubble';
 import { ChatInput } from './ChatInput';
 
@@ -62,7 +62,7 @@ export function ChatRoom({ roomId, nickname, userCount }: ChatRoomProps) {
       </div>
 
       {/* Banner Ad */}
-      <div ref={bannerRef} style={styles.banner} />
+      {adsEnabled && <div ref={bannerRef} style={styles.banner} />}
 
       {/* Messages */}
       <div ref={scrollRef} style={styles.messages}>

@@ -13,7 +13,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
     if (!value.trim() || disabled) return;
     onSend(value);
     setValue('');
-    inputRef.current?.focus();
+    inputRef.current?.blur();
   };
 
   return (
